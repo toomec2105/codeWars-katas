@@ -38,4 +38,37 @@ public class MexicanWaveTest {
         assertArrayEquals(result, MexicanWave.wave(" gap "));
     }
     
+    @Test
+    public void basicOptimalTest1() {
+        String[] result = new String[] { "Hello", "hEllo", "heLlo", "helLo", "hellO" };
+        assertArrayEquals(result, MexicanWave.waveOptimal("hello"));
+    }
+    
+   @Test
+    public void basicOptimalTest2() {
+        String[] result = new String[] { "Codewars", "cOdewars", "coDewars", "codEwars", "codeWars", "codewArs", "codewaRs", "codewarS" };
+        assertArrayEquals(result, MexicanWave.waveOptimal("codewars"));
+    }
+    
+    @Test
+    public void basicOptimalTest3() {
+        String[] result = new String[] { };
+        assertArrayEquals(result, MexicanWave.waveOptimal(""));
+    }
+    
+    @Test
+    public void basicOptimalTest4() {
+        String[] result = new String[] { "Two words", "tWo words", "twO words", "two Words", "two wOrds", "two woRds", "two worDs", "two wordS" };
+        assertArrayEquals(result, MexicanWave.waveOptimal("two words"));
+    }
+    
+    @Test
+    public void basicOptimalTest5() {
+        String[] result = new String[] { " Gap ", " gAp ", " gaP " };
+        assertArrayEquals(result, MexicanWave.waveOptimal(" gap "));
+    }
+    
+    
+    
+    
 }

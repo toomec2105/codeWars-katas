@@ -32,10 +32,33 @@ public class TenMinuteWalk {
             }
         }
 
-        if (northSouthSum == 0 && eastWestSum == 0) {
-            return true;
-        }
-
-        return false;
+        return northSouthSum == 0 && eastWestSum == 0;
     }
+    
+    public static boolean isValidOptimal(char[] walk) {
+        if (walk.length != 10) {
+          return false;
+        }
+        
+        int x = 0;
+        int y = 0;
+        
+        for (int i = 0; i < 10; i++) {
+          switch (walk[i]) {
+            case 'n':
+              y++;
+              break;
+            case 'e':
+              x++;
+              break;
+            case 's':
+              y--;
+              break;
+            case 'w':
+              x--;
+              break;
+          }
+        }
+        return x == 0 && y == 0;
+      }
 }

@@ -130,4 +130,57 @@ public class SnakesAndLadders {
         return activePlayerPosition;
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private int[] players = {0,0};
+    private  int currentPlayer = 0;
+
+    private static int[] dependencies = {0, 38, 0, 0, 0, 0, 14, 31, 0, 0,
+                                         0, 0, 0, 0, 26, 6, 0, 0, 0, 0,
+                                         42, 0, 0, 0, 0, 0, 0, 84, 0, 0,
+                                         0, 0, 0, 0, 0, 44, 0, 0, 0, 0,
+                                         0, 0, 0, 0, 0, 25, 0, 0, 11, 0,
+                                         67, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                         0, 19, 0, 60, 0, 0, 0, 0, 0, 0,
+                                         91, 0, 0, 53, 0, 0, 0, 98, 0, 0,
+                                         0, 0, 0, 0, 0, 0, 94, 0, 68, 0,
+                                         0, 88, 0, 0, 75, 0, 0, 0, 80, 0
+                                        }; 
+    
+    public String playOptimal(int die1, int die2) {  
+        if(players[0] == 100 || players[1] == 100) {
+            return "Game over!";
+        }
+
+        int newPosition = players[currentPlayer] + die1 + die2;
+
+        if(newPosition > 100) {
+            newPosition = 100 - (newPosition - 100);
+        }
+        
+        
+        players[currentPlayer] = dependencies[newPosition-1] != 0 ? dependencies[newPosition-1] : newPosition;
+        
+        String response =  "Player ";
+        if(players[currentPlayer] == 100) {
+           response += currentPlayer + 1 + " Wins!";
+        } else {
+           response += currentPlayer + 1 + " is on square " + players[currentPlayer];
+        }
+        
+        if(die1 != die2) {
+          currentPlayer = currentPlayer == 1 ? 0 : 1;
+        }
+        
+        return response;
+    }
+     
 }
