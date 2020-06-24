@@ -11,4 +11,11 @@ public class DuplicateEncoderTest {
             DuplicateEncoder.encode("Prespecialized"));
       assertEquals("))))())))",DuplicateEncoder.encode("   ()(   "));
     }
+    
+    @Test
+    public void testOptimalEncoder() {
+      assertEquals(")()())()(()()(",
+            DuplicateEncoder.encodeOptimal("Prespecialized"));
+      assertEquals("))))())))",DuplicateEncoder.encodeOptimal("   ()(   "));
+    }
 }

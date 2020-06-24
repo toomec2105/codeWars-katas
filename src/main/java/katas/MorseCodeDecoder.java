@@ -19,4 +19,16 @@ public class MorseCodeDecoder {
         
         return decoded;
     }
+    
+    public static String decodeOptimal(String morseCode) {
+        String result = "";
+        for(String word : morseCode.trim().split("   ")) {
+          for(String letter : word.split("\\s+")) {
+        	  //MorseCode breaks the code in eclipse - needs to be imported
+        	  //result += MorseCode.get(letter);
+          }
+          result += ' ';
+        }
+        return result.trim();
+      }
 }

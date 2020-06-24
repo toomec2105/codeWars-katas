@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class DuplicateEncoder {
     static String encode(final String word) {
         StringBuilder encoded = new StringBuilder(word.toLowerCase());
-        HashMap < String, Integer > repeatedLetters = new HashMap();
+        HashMap < String, Integer > repeatedLetters = new HashMap<>();
         
         for (int i = 0; i < encoded.length(); i++) {
             String currentLetter = String.valueOf(encoded.charAt(i));
@@ -30,4 +30,14 @@ public class DuplicateEncoder {
 
         return String.valueOf(encoded);
     }
+    
+    static String encodeOptimal(String word){
+        word = word.toLowerCase();
+        String result = "";
+        for (int i = 0; i < word.length(); ++i) {
+          char c = word.charAt(i);
+          result += word.lastIndexOf(c) == word.indexOf(c) ? "(" : ")";
+        }
+        return result;
+      }
 }
