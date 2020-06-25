@@ -20,15 +20,11 @@ public class zooDisaster {
     if(i < 0){
       continue;
     }
-    System.out.println("starting " + Arrays.toString(animals.toArray()));
-    System.out.println("-----------------------------------------------");
     
       String predator = animals.get(i);
       int previousAnimal = i - 1; 
-      System.out.println("predator "+ predator);
       if(i > 0 && isEatable(predator, animals.get(previousAnimal))){
       
-      System.out.println("eating <<< "+ predator + " eats " + animals.get(previousAnimal));
         output.add(predator + " eats " + animals.get(previousAnimal));
         animals.remove(previousAnimal);
         i = i - 3;
@@ -40,7 +36,6 @@ public class zooDisaster {
       
       if(i < animals.size() - 1 && isEatable(predator, animals.get(nextAnimal))){
       
-      System.out.println("eating >>> "+ predator + " eats " + animals.get(nextAnimal));
         output.add(predator + " eats " + animals.get(nextAnimal));
         animals.remove(nextAnimal);
         i = i - 1;
