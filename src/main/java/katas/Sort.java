@@ -46,24 +46,28 @@ public class Sort {
 		}
 		
 		List<Integer> numbers = new ArrayList<>(input);
-		List<Integer> output = new ArrayList<>();
 
-		while(numbers.size() > 0) {
-			
+		for(int i = 0; i < numbers.size(); i++) {
+			int smallest = i;
 			Integer smallestNum = numbers.get(0);
 			int smallestNumIndex = 0;
 			
-			for(int j = 0; j < numbers.size(); j++) {
-				smallestNum = numbers.get(j) <= smallestNum ? numbers.get(j) : smallestNum;
-				smallestNumIndex = numbers.get(j) <= smallestNum ? j : smallestNumIndex;
+			for(int j = i+1; j < numbers.size(); j++) {
+				if(numbers.get(j) < numbers.get(smallest)) {
+					smallest = j;
+				}
 			}
+			numbers = swap(numbers,i,smallest);
 			
-			output.add(smallestNum);
-			numbers.remove(smallestNumIndex);
 		}
-		return output;
+		return numbers;
 		
 	}
-	
+	private static List<Integer> swap(List<Integer> data, int first, int second) {
+		int temporary = data.get(first);
+		data.set(first,data.get(second));
+		data.set(second,temporary);
+		return data;
+	}
 	
 }
