@@ -82,15 +82,11 @@ public class zooDisaster {
 	}
 
 	private static List<String> whoEatsWhoRecursiveInternal(final List<String> animals, final int curIndex, final List<String> output) {
-		
-		System.out.println("----------------------------Enter recursive internal");
-		System.out.println("animals: " + animals.toString());
-		System.out.println( " output: " + output);
+	
 		// stop condition(when to return)
 		int nextAnimal = curIndex + 1;
 		
 		if (curIndex >= animals.size() || animals.size() == 1 || nextAnimal >= animals.size()) {
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!! Entered the Stop condition");
 			output.add(String.join(",", animals));
 			return output;
 		}
@@ -106,22 +102,19 @@ public class zooDisaster {
 		 * output); }
 		 */
 		String predator = animals.get(curIndex);
-		if(previousAnimal >= 0 && isEatable(predator, animals.get(previousAnimal))) {			
-			System.out.println("<<<<<<<<  Entered eatLeft condition");
+		if(previousAnimal >= 0 && isEatable(predator, animals.get(previousAnimal))) {	
 			output.add(predator + " eats " + animals.get(previousAnimal));
 			animals.remove(previousAnimal);
 			newIndex = curIndex -2;
 		}
 		
 		// eats to the right without eating to the left
-		if(nextAnimal < animals.size() && isEatable(predator, animals.get(nextAnimal))) {		
-			System.out.println("<<<<<<<<  Entered eatRight condition");
+		if(nextAnimal < animals.size() && isEatable(predator, animals.get(nextAnimal))) {	
 			output.add(predator + " eats " + animals.get(nextAnimal));
 			animals.remove(nextAnimal);
 			newIndex = curIndex;
 		}
-		
-		System.out.println("<><><><><><><><><><><>  Doesn;t eat left or right");
+
 		whoEatsWhoRecursiveInternal(animals, newIndex, output);
 		return output;
 	}

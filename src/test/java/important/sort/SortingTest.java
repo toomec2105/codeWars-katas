@@ -1,4 +1,4 @@
-package katas;
+package important.sort;
 
 import static org.junit.jupiter.api.Assertions.*;
 
