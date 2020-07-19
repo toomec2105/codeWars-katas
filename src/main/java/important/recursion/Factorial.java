@@ -1,5 +1,7 @@
 package important.recursion;
 
+import java.math.BigInteger;
+
 public class Factorial {
 	public static void main(String[] args) {
 		test();
@@ -29,6 +31,23 @@ public class Factorial {
 		}
 	}
 
+	public static BigInteger factorialRecursiveBiginteger(BigInteger num) {
+		/*
+		 * if (num.equals(new BigInteger("0")) || num.equals(new BigInteger("1"))) {
+		 * return new BigInteger("1"); } else { num =
+		 * num.multiply(factorialRecursiveBiginteger(num.add(new BigInteger("-1"))));
+		 * return num; }
+		 */
+		if (num.compareTo(BigInteger.ONE) <= 0 ) {
+			return BigInteger.ONE;
+		} else {
+			num = num.multiply(factorialRecursiveBiginteger(num.add(new BigInteger("-1"))));
+			return num;
+		}
+	}
+
+	
+	
 	public static void test() {
 		int num = 1;
 		int expected = 1;
@@ -53,6 +72,8 @@ public class Factorial {
 		 */
 		System.out.println(
 				"factorialRecursive " + num + " expected: " + expected + ", actual: " + factorialRecursive(num));
+		System.out.println("factorialRecursive " + num + " expected: " + expected + ", actual: "
+				+ factorialRecursiveBiginteger(new BigInteger("4")));
 		/*
 		 * num = 6; expected = 720; System.out.println( "factorialIterative " + num +
 		 * " expected: " + expected + ", actual: " + factorialIterative(num));
